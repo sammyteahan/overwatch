@@ -1,0 +1,18 @@
+{
+  "name": "pi-api",
+  "version": "1.0.0",
+  "description": "Temp api for raspberrypi ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Sammy T",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "pug": "^2.0.0-alpha7"
+  }
+}
