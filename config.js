@@ -12,6 +12,6 @@ if (process.env.NODE_ENV === 'staging') {
   };
 } else {
   module.exports = {
-    port: 8080
+    port: 3000
   };
 }

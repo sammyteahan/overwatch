@@ -15,6 +15,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/static', express.static(__dirname + '/client'));
 
 /**
+* @desc request middleware
+*/
+app.use(function (req, res, next) {
+  console.log('A request was sent', req.body);
+  next();
+});
+
+/**
  * @desc endpoints
  */
 app.get('/', function (req, res) {
@@ -23,8 +31,7 @@ app.get('/', function (req, res) {
 
 app.post('/message', function (req, res) {
   var message = req.body.message
-  console.log(message);
-  res.json(message);
+  res.status(200).json(message);
 });
 
 app.listen(process.env.PORT || config.port, function() {
