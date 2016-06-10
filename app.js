@@ -34,10 +34,12 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
-app.post('/message', function (req, res) {
-  var message = req.body.message
-  res.status(200).json(message);
-});
+app.route('/status').post(routes.create);
+
+// app.post('/message', function (req, res) {
+//   var message = req.body.message
+//   res.status(200).json(message);
+// });
 
 app.listen(process.env.PORT || config.port, function() {
   console.log('getting jiggy on port ' + (process.env.PORT || config.port));

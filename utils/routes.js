@@ -39,16 +39,21 @@ function getOne(req, res, next) {
 //     }).finally(next);
 // }
 // 
-// function create(req, res, next) {
-//   var question = req.body;
-//   r.table('statuses')
-//     .insert(question, {returnChanges: true}).run(req._rdbConn).then(function (result) {
-//       if (result.inserted !== 1) {
-//         handleError(res, next)(new Error('Document was not inserted'));
-//       } else {
-//         res.json(result.changes[0].new_val);
-//       }
-//     }).error(handleError(res))
-//     .finally(next);
-// }
+function create(req, res, next) {
+  var body = req.body;
+  r.table('statuses')
+    .insert(body, {returnChanges: true}).run(req._rdbConn).then(function (result) {
+      if (result.inserted !== 1) {
+        handleError(res, next)(new Error('Document was not inserted'));
+      } else {
+        res.json(result.changes[0].new_val);
+      }
+    }).error(handleError(res))
+    .finally(next);
+}
 
+module.exports = {
+  get: get,
+  getOne: getOne,
+  create: create
+};
