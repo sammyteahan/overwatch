@@ -13,6 +13,8 @@
     "body-parser": "^1.15.1",
     "cors": "^2.7.1",
     "express": "^4.13.4",
-    "pug": "^2.0.0-alpha7"
+    "pug": "^2.0.0-alpha7",
+    "rethinkdb": "^2.3.2",
+    "socket.io": "^1.4.6"
   }
 }

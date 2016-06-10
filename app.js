@@ -1,5 +1,9 @@
 var express = require('express'),
+  helpers = require('./utils/helpers'),
+  routes = require('./utils/routes.js'),
   bodyParser = require('body-parser'),
+  sock = require('socket.io'),
+  rethinkdb = require('rethinkdb'),
   config = require('./config'),
   cors = require('cors'),
   app = express();
@@ -12,7 +16,8 @@ app.use(bodyParser.json());
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/client');
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/static', express.static(__dirname + '/client'));
+app.use(express.static(__dirname + '/client'));
+
 
 /**
 * @desc request middleware
