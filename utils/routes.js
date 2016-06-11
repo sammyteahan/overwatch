@@ -1,4 +1,6 @@
-var r = require('rethinkdb');
+var r = require('rethinkdb'),
+  helpers = require('./helpers.js');
+
 
 /**
 * @desc Helpers for REST routes
@@ -9,7 +11,7 @@ function get(req, res, next) {
       return cursor.toArray();
     }).then(function (result) {
       res.json(result);
-    }).error(handleError(res))
+    }).error(helpers.handleError(res))
     .finally(next);
 }
 
@@ -23,32 +25,20 @@ function getOne(req, res, next) {
 }
 
 /**
-* @todo re-write this logic
+* @desc endpoint to create a new status document
+*
+* @param {Object} :: status
 */
-// function update(req, res, next) {
-//   var id = req.body.id;
-//   r.table('statuses')
-//     .get(id)
-//     .update({'points': r.row('points').add(1)}, {returnChanges: true})
-//     .run(req._rdbConn).then(function (result) {
-//       if(result.replaced !== 1) {
-//         handleError(res, next)(new Error('Document was not updated'));
-//       } else {
-//         res.json(result.changes[0].new_val);
-//       }
-//     }).finally(next);
-// }
-// 
 function create(req, res, next) {
   var body = req.body;
   r.table('statuses')
-    .insert(body, {returnChanges: true}).run(req._rdbConn).then(function (result) {
+    .insert({state: body, created: r.now()}, {returnChanges: true}).run(req._rdbConn).then(function (result) {
       if (result.inserted !== 1) {
-        handleError(res, next)(new Error('Document was not inserted'));
+        helpers.handleError(res, next)(new Error('Document was not inserted'));
       } else {
         res.json(result.changes[0].new_val);
       }
-    }).error(handleError(res))
+    }).error(helpers.handleError(res))
     .finally(next);
 }
 

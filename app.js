@@ -17,6 +17,7 @@ app.set('view engine', 'pug');
 app.set('views', __dirname + '/client');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/client'));
+app.use(helpers.createConnection);
 
 
 /**
@@ -30,16 +31,16 @@ app.use(function (req, res, next) {
 /**
  * @desc endpoints
  */
-app.get('/', function (req, res) {
-  res.render('index');
-});
+app.route('/statuses').get(routes.get);
+app.route('/statuses/:id').get(routes.getOne);
+app.route('/statuses').post(routes.create);
 
-app.route('/status').post(routes.create);
+/**
+* @todo check to see if this works
+*/
+app.get('/', (req, res) => res.render('index'));
 
-// app.post('/message', function (req, res) {
-//   var message = req.body.message
-//   res.status(200).json(message);
-// });
+app.use(helpers.closeConnection);
 
 app.listen(process.env.PORT || config.port, function() {
   console.log('getting jiggy on port ' + (process.env.PORT || config.port));
