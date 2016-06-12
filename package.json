@@ -1,11 +1,11 @@
 {
   "name": "Overwatch",
   "version": "1.0.0",
-  "description": "Temp api for raspberrypi ",
+  "description": "API for Overwatch application",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon server.js"
   },
   "author": "Sammy T",
   "license": "ISC",

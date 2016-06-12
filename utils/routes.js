@@ -32,7 +32,7 @@ function getOne(req, res, next) {
 function create(req, res, next) {
   var body = req.body;
   r.table('statuses')
-    .insert({state: body, created: r.now()}, {returnChanges: true}).run(req._rdbConn).then(function (result) {
+    .insert({body, created: r.now()}, {returnChanges: true}).run(req._rdbConn).then(function (result) {
       if (result.inserted !== 1) {
         helpers.handleError(res, next)(new Error('Document was not inserted'));
       } else {

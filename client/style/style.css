@@ -1,0 +1,42 @@
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    color: #47a3da;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    height: 100%;
+}
+
+/**
+* ¡HEADER
+*/
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+}
+
+/**
+* ¡HELPERS
+*/
+.squeeze {
+    max-width: 1024px;
+    position: relative;
+    width: 100%;
+}
+
