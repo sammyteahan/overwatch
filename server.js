@@ -3,7 +3,7 @@ var express = require('express'),
   routes = require('./utils/routes.js'),
   bodyParser = require('body-parser'),
   sock = require('socket.io'),
-  rethinkdb = require('rethinkdb'),
+  r = require('rethinkdb'),
   config = require('./config'),
   cors = require('cors'),
   app = express(),
@@ -36,6 +36,44 @@ app.route('/statuses').post(routes.create);
 app.get('/', (req, res) => res.render('index'));
 app.use(helpers.closeConnection);
 
+/**
+* @desc Changefeed
+*/
+r.connect({db: 'overwatch'}).then(function (conn) {
+  r.table('statuses').changes().run(conn)
+  .then(function (cursor) {
+    cursor.each(function (err, change) {
+      console.log('New Change: ', change);
+      io.sockets.emit('status change', change);
+    });
+  });
+});
+
+/**
+* @desc socket setup
+*/
+io.on('connection', function (socket) {
+  console.log('client connected');
+  socket.on('disconnect', function () {
+    console.log('disconnected');
+  });
+  /**
+  * @desc action :: new status
+  *
+  * @param data {Object} - Object with new status
+  */
+  socket.on('new status', function (data) {
+    r.connect({db: 'overwatch'}).then(function (conn) {
+      return r.table('statuses')
+        .insert(data)
+        .run(conn)
+        .finally(function() { conn.close(); });
+    })
+    .error(function (err) { console.log('Error adding new question: ', err); });
+  });
+});
+
 http.listen(process.env.PORT || config.port, function() {
   console.log('getting jiggy on port ' + (process.env.PORT || config.port));
 });
+

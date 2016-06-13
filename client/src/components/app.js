@@ -6,21 +6,30 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      socket: io.connect(),
       statuses: []
     };
   }
+  componentWillMount() {
+    const socket = this.state.socket;
+    socket.on('status change', (data) => {
+      this.setState({statuses: [data.new_val].concat(this.state.statuses)});
+    });
+  }
   componentDidMount() {
     return axios.get('http://localhost:3000/statuses').then((response) => {
-      console.log(response.data);
       this.setState({
         statuses: response.data
       });
     });
   }
+  componentWillReceiveProps(nextProps) {
+    console.log('will receive props');
+  }
   render() {
     let items = this.state.statuses.map((item, i) => {
       return (
-        <li key={i}>{item.created}, {item.state.state}</li>
+        <li key={i}>{item.created} :: {item.status}</li>
       );
     });
     return (

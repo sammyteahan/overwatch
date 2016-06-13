@@ -28,11 +28,12 @@ function getOne(req, res, next) {
 * @desc endpoint to create a new status document
 *
 * @param {Object} :: status
+* @example curl -X POST -H 'Content-Type: application/json' -d '{"status": "motion detected"}' localhost:3000/statuses
 */
 function create(req, res, next) {
-  var body = req.body;
+  var status = req.body.status;
   r.table('statuses')
-    .insert({body, created: r.now()}, {returnChanges: true}).run(req._rdbConn).then(function (result) {
+    .insert({status: status, created: r.now()}, {returnChanges: true}).run(req._rdbConn).then(function (result) {
       if (result.inserted !== 1) {
         helpers.handleError(res, next)(new Error('Document was not inserted'));
       } else {
