@@ -28,6 +28,11 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.highlight {
+  border-bottom: 5px solid #47a3da;
 }
 
 
@@ -62,7 +67,9 @@ header {
 }
 
 .card {
-  border: 5px solid lightseagreen;
+  border: 4px solid #47a3da;
+  margin: 10px 0;
+  padding: 15px 30px;
 }
 
 
@@ -74,3 +81,8 @@ header {
     position: relative;
     width: 100%;
 }
+
+.push--ends { margin: 20px 0; }
+.push--top { margin-top: 20px;}
+.push--bottom { margin-bottom: 20px;}
+.pad--ends {padding: 20px 0;}

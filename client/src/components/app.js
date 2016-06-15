@@ -19,7 +19,6 @@ export default class App extends Component {
   }
   componentDidMount() {
     return axios.get('http://localhost:3000/statuses').then((response) => {
-      console.log(response.data);
       this.setState({
         statuses: response.data
       });
@@ -34,17 +33,17 @@ export default class App extends Component {
         .subtract(6, 'hours')
         .format('dddd, MMMM Do YYYY, h:mm:ss a');
       return (
-        <div key={i}>
+        <div className="card" key={i}>
           <p>{now}</p>
         </div>
       );
     });
     return (
       <div className="content">
-        <header>
+        <header className="highlight pad--ends push--bottom">
           <h1>Overwatch</h1>
         </header>
-        <div>
+        <div className="card-container">
           {timecards}
         </div>
       </div>
