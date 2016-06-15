@@ -18,7 +18,7 @@ export default class App extends Component {
     });
   }
   componentDidMount() {
-    return axios.get('http://localhost:3000/statuses').then((response) => {
+    return axios.get('/statuses').then((response) => {
       this.setState({
         statuses: response.data
       });
