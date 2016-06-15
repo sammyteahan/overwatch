@@ -76,4 +76,3 @@ io.on('connection', function (socket) {
 http.listen(process.env.PORT || config.port, function() {
   console.log('getting jiggy on port ' + (process.env.PORT || config.port));
 });
-

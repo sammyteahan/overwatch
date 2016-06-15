@@ -28,7 +28,8 @@ function getOne(req, res, next) {
 * @desc endpoint to create a new status document
 *
 * @param {Object} :: status
-* @example curl -X POST -H 'Content-Type: application/json' -d '{"status": "motion detected"}' localhost:3000/statuses
+* @example curl -X POST -H 'Content-Type: application/json' -d '{"status": "test"}' localhost:3000/statuses
+* @example curl -X POST -H 'Content-Type: application/json' -d '{"status": "test"}' http://162.243.6.139:3000/statuses
 */
 function create(req, res, next) {
   var status = req.body.status;

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import moment from 'moment';
 import { Component } from 'react';
 
 export default class App extends Component {
@@ -18,6 +19,7 @@ export default class App extends Component {
   }
   componentDidMount() {
     return axios.get('http://localhost:3000/statuses').then((response) => {
+      console.log(response.data);
       this.setState({
         statuses: response.data
       });
@@ -27,24 +29,25 @@ export default class App extends Component {
     console.log('will receive props');
   }
   render() {
-    let items = this.state.statuses.map((item, i) => {
+    let timecards = this.state.statuses.map((item, i) => {
+      let now = moment(item.created)
+        .subtract(6, 'hours')
+        .format('dddd, MMMM Do YYYY, h:mm:ss a');
       return (
-        <li key={i}>{item.created} :: {item.status}</li>
+        <div key={i}>
+          <p>{now}</p>
+        </div>
       );
     });
     return (
-      <div className="squeeze">
+      <div className="content">
         <header>
           <h1>Overwatch</h1>
         </header>
         <div>
-          <p>items</p>
-          <ul>
-            {items}
-          </ul>
+          {timecards}
         </div>
       </div>
     );
   }
 }
-

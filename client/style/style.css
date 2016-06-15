@@ -1,3 +1,6 @@
+/**
+* !GLOBAL
+*/
 * {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -16,6 +19,8 @@ body {
     height: 100%;
 }
 
+
+
 /**
 * ¡HEADER
 */
@@ -23,13 +28,43 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px 0;
-    width: 100%;
 }
 
+
+
+/**
+* ¡HEADER
+*/
+
+
+
+/**
+* ¡CONTAINERS
+*/
 .container {
-    display: flex;
+  height: 100%;
 }
+
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+/**
+* ¡CARDS
+*/
+.card-container {
+
+}
+
+.card {
+  border: 5px solid lightseagreen;
+}
+
 
 /**
 * ¡HELPERS
@@ -39,4 +74,3 @@ header {
     position: relative;
     width: 100%;
 }
-
