@@ -30,7 +30,6 @@ export default class App extends Component {
   render() {
     let timecards = this.state.statuses.map((item, i) => {
       let now = moment(item.created)
-        .subtract(6, 'hours')
         .format('dddd, MMMM Do YYYY, h:mm:ss a');
       return (
         <div className="card" key={i}>

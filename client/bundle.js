@@ -21475,7 +21475,7 @@
 	    key: 'render',
 	    value: function render() {
 	      var timecards = this.state.statuses.map(function (item, i) {
-	        var now = (0, _moment2.default)(item.created).subtract(6, 'hours').format('dddd, MMMM Do YYYY, h:mm:ss a');
+	        var now = (0, _moment2.default)(item.created).format('dddd, MMMM Do YYYY, h:mm:ss a');
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'card', key: i },
