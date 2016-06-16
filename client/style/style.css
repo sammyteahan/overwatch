@@ -25,6 +25,7 @@ body {
 * ¡HEADER
 */
 header {
+    box-shadow: 2px 2px 0 turquoise;
     display: flex;
     justify-content: center;
     align-items: center;
