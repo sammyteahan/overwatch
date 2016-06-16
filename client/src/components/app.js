@@ -45,6 +45,7 @@ export default class App extends Component {
         </header>
         <div className="dashboard squeeze">
           <div className="card-container">
+          <h2>Recent</h2>
           {timecards}
           </div>
           <div className="chart-container">

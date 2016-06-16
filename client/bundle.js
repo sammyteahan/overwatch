@@ -21508,6 +21508,11 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'card-container' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'Recent'
+	            ),
 	            timecards
 	          ),
 	          _react2.default.createElement(
@@ -36583,21 +36588,22 @@
 	      data: {
 	        labels: ["January", "February", "March", "April", "May", "June", "July"],
 	        datasets: [{
-	          label: "My First dataset",
+	          label: "Monthly Activity",
 	          fill: false,
 	          lineTension: 0.1,
-	          backgroundColor: "rgba(75,192,192,0.4)",
-	          borderColor: "rgba(75,192,192,1)",
+	          backgroundColor: "#1abc9c",
+	          borderColor: "#47a3da",
 	          borderCapStyle: 'butt',
 	          borderDash: [],
+	          borderWidth: 4,
 	          borderDashOffset: 0.0,
 	          borderJoinStyle: 'miter',
 	          pointBorderColor: "rgba(75,192,192,1)",
 	          pointBackgroundColor: "#fff",
 	          pointBorderWidth: 1,
 	          pointHoverRadius: 5,
-	          pointHoverBackgroundColor: "rgba(75,192,192,1)",
-	          pointHoverBorderColor: "rgba(220,220,220,1)",
+	          pointHoverBackgroundColor: "#47a3da",
+	          pointHoverBorderColor: "#1abc9c",
 	          pointHoverBorderWidth: 2,
 	          pointRadius: 1,
 	          pointHitRadius: 10,
