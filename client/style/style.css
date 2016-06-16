@@ -58,20 +58,38 @@ header {
   align-items: center;
 }
 
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-container {
+
+}
+
+.chart-container {
+  /*flex: 1;*/
+}
+
 
 
 /**
 * ¡CARDS
 */
-.card-container {
-
-}
 
 .card {
   border: 4px solid #47a3da;
-  margin: 10px 0;
+  margin:  0 0 10px;
   padding: 15px 30px;
 }
+
+
+
+/**
+* ¡CHART
+*/
+
+
 
 
 /**
@@ -87,3 +105,7 @@ header {
 .push--top { margin-top: 20px;}
 .push--bottom { margin-bottom: 20px;}
 .pad--ends {padding: 20px 0;}
+
+canvas {
+  border: 2px solid rgba(75,192,192,1);
+}

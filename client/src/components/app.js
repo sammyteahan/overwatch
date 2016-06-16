@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import moment from 'moment';
 import { Component } from 'react';
+import MovementChart from './movementChart';
 
 export default class App extends Component {
   constructor(props) {
@@ -42,8 +43,13 @@ export default class App extends Component {
         <header className="highlight pad--ends push--bottom">
           <h1>Overwatch</h1>
         </header>
-        <div className="card-container">
+        <div className="dashboard squeeze">
+          <div className="card-container">
           {timecards}
+          </div>
+          <div className="chart-container">
+            <MovementChart />
+          </div>
         </div>
       </div>
     );
