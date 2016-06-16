@@ -25,9 +25,6 @@ export default class App extends Component {
       });
     });
   }
-  componentWillReceiveProps(nextProps) {
-    console.log('will receive props');
-  }
   render() {
     let timecards = this.state.statuses.map((item, i) => {
       let now = moment(item.created)
@@ -44,9 +41,11 @@ export default class App extends Component {
           <h1>Overwatch</h1>
         </header>
         <div className="dashboard squeeze">
-          <div className="card-container">
-          <h2>Recent</h2>
-          {timecards}
+          <div>
+            <h2 style={{marginBottom: 5, marginLeft: 4}}>Recent Activity</h2>
+            <div className="card-container">
+              {timecards}
+            </div>
           </div>
           <div className="chart-container">
             <MovementChart />

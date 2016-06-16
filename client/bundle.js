@@ -21471,11 +21471,6 @@
 	      });
 	    }
 	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      console.log('will receive props');
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var timecards = this.state.statuses.map(function (item, i) {
@@ -21507,13 +21502,17 @@
 	          { className: 'dashboard squeeze' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'card-container' },
+	            null,
 	            _react2.default.createElement(
 	              'h2',
-	              null,
-	              'Recent'
+	              { style: { marginBottom: 5, marginLeft: 4 } },
+	              'Recent Activity'
 	            ),
-	            timecards
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'card-container' },
+	              timecards
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
