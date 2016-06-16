@@ -7,6 +7,8 @@ var r = require('rethinkdb'),
 */
 function get(req, res, next) {
   r.table('statuses')
+    .orderBy(r.desc('created'))
+    .limit(50)
     .run(req._rdbConn).then(function (cursor) {
       return cursor.toArray();
     }).then(function (result) {
