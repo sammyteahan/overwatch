@@ -87,7 +87,7 @@ class MovementChart extends Component {
               data: this.props.lineData
             }]
           },
-          options: this.state.data
+          options: this.state.options
         })
       })
     }
@@ -95,7 +95,7 @@ class MovementChart extends Component {
   render() {
     return (
       <div>
-        <canvas ref="chart" width="600" height="350"></canvas>
+        <canvas ref="chart"></canvas>
       </div>
     );
   }

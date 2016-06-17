@@ -47,10 +47,10 @@ export default class App extends Component {
     return (
       <div className="content">
         <header className="highlight pad--ends push--bottom">
-          <h1>Overwatch</h1>
+          <h1 className="spacing">OVERWATCH</h1>
         </header>
         <div className="dashboard squeeze">
-          <div>
+          <div className="wrap-cards">
             <h2 className="title">Recent Activity</h2>
             <div className="card-container">
               {timecards}
