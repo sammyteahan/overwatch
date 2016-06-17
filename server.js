@@ -34,6 +34,8 @@ app.use(function (req, res, next) {
 app.route('/statuses').get(routes.get);
 app.route('/statuses/:id').get(routes.getOne);
 app.route('/statuses').post(routes.create);
+app.route('/history/week').get(routes.getWeek);
+app.route('/history/weekDetails').get(routes.getWeekDetails);
 app.get('/', (req, res) => res.render('index'));
 app.use(helpers.closeConnection);
 

@@ -58,14 +58,12 @@ header {
 }
 
 .card-container {
-  height: 700px;
+  height: 75vh;
   overflow: hidden;
   overflow-y: scroll;
 }
 
-.chart-container {
-  /*flex: 1;*/
-}
+.chart-container {}
 
 
 
@@ -93,7 +91,18 @@ header {
 .push--ends { margin: 20px 0; }
 .push--top { margin-top: 20px;}
 .push--bottom { margin-bottom: 20px;}
-.pad--ends {padding: 20px 0;}
+.push-half--bottom { margin-bottom: 10px;}
+.pad--ends { padding: 20px 0;}
+.pad-half--left { padding-left: 10px;}
+
+
+
+/**
+* ¡TYPOGRAPHY
+*/
+.title {
+  margin: 0 5px 5px 4px;
+}
 
 
 
@@ -107,7 +116,7 @@ header {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px #1abc9c;
+    -webkit-box-shadow: inset 0 0 6px #95a5a6;
     -webkit-border-radius: 0;
     border-radius: 0;
 }
@@ -118,5 +127,5 @@ header {
     -webkit-box-shadow: inset 0 0 6px #1abc9c;
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-	background: rgba(255,0,0,0.4);
+	background: #1abc9c;
 }

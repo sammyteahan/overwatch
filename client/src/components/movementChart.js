@@ -11,38 +11,31 @@ class MovementChart extends Component {
     this.state = {
       ctx: null,
       chart: null,
-      tmpData: {
-            labels: ['Item 1', 'Item 2', 'Item 3'],
-            datasets: [{
-                data: [10, 20, 30],
-                backgroundColor: 'rgba(26, 188, 156,1.0)'
-            }]
-        },
       data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
         datasets: [
-            {
-                label: "Monthly Activity",
-                fill: false,
-                lineTension: 0.1,
-                backgroundColor: "#1abc9c",
-                borderColor: "#47a3da",
-                borderCapStyle: 'butt',
-                borderDash: [],
-                borderWidth: 4,
-                borderDashOffset: 0.0,
-                borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(75,192,192,1)",
-                pointBackgroundColor: "#fff",
-                pointBorderWidth: 1,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: "#47a3da",
-                pointHoverBorderColor: "#1abc9c",
-                pointHoverBorderWidth: 2,
-                pointRadius: 1,
-                pointHitRadius: 10,
-                data: [65, 59, 80, 81, 56, 55, 40],
-            }
+          {
+            label: "Monthly Activity",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "#1abc9c",
+            borderColor: "#47a3da",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderWidth: 4,
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "#47a3da",
+            pointHoverBorderColor: "#1abc9c",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: []
+          }
         ]
       },
       options: {
@@ -56,8 +49,15 @@ class MovementChart extends Component {
       ctx: this.refs.chart.getContext('2d'),
     });
   }
+  /**
+  * @todo figure out how to setState on these nested fields.
+  * maybe consider react-sparklines if there isn't a better way
+  *
+  * this.state.chart.data.datasets[0].data = this.props.lineData;
+  * this.state.chart.update();
+  */
   componentDidUpdate(prevProps, prevState) {
-    if(!this.state.chart) {
+    if (!this.state.chart) {
       this.setState({
         chart: new Chart(this.state.ctx, {
           type: 'line',
@@ -66,10 +66,35 @@ class MovementChart extends Component {
         })
       });
     }
+    if (this.props.lineData !== prevProps.lineData) {
+      this.setState({
+        chart: new Chart(this.state.ctx, {
+          type: 'line',
+          data: {
+            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            datasets: [{
+              label: "Weekly Activity",
+              backgroundColor: "#47a3da",
+              borderWidth: 4,
+              pointBorderColor: "rgba(75,192,192,1)",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "#47a3da",
+              pointHoverBorderColor: "#1abc9c",
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              data: this.props.lineData
+            }]
+          },
+          options: this.state.data
+        })
+      })
+    }
   }
   render() {
     return (
-      <div style={{maxWidth: 600}}>
+      <div>
         <canvas ref="chart" width="600" height="350"></canvas>
       </div>
     );

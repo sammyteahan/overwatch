@@ -46,8 +46,51 @@ function create(req, res, next) {
     .finally(next);
 }
 
+/**
+* @desc endpoint returns historical activity data for one week
+*/
+function getWeek(req, res, next) {
+  r.table('statuses')
+  .group(r.row('created').day())
+  .filter((row) => {
+    return row('created').gt(r.now().sub(86400*7));
+  })
+  .count()
+  .ungroup()
+  .map((row) => row('reduction'))
+  .run(req._rdbConn).then(function (cursor) {
+    return cursor.toArray();
+  }).then(function (result) {
+    res.json(result);
+  }).error(helpers.handleError(res))
+  .finally(next);
+}
+
+/**
+* @desc get week total (ungrouped)
+*/
+function getWeekDetails(req, res, next) {
+  r.table('statuses')
+  .group(r.row('created'))
+  .filter((row) => {
+    return row('created').gt(r.now().sub(86400*7));
+  })
+  .orderBy(r.desc('created'))
+  .pluck('created', 'status')
+  .ungroup()
+  .map((row) => row('reduction').nth(0))
+  .run(req._rdbConn).then(function (cursor) {
+    return cursor.toArray();
+  }).then(function (result) {
+    res.json(result);
+  }).error(helpers.handleError(res))
+  .finally(next);
+}
+
 module.exports = {
   get: get,
   getOne: getOne,
-  create: create
+  create: create,
+  getWeek: getWeek,
+  getWeekDetails: getWeekDetails
 };

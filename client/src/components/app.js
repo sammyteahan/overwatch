@@ -3,25 +3,34 @@ import React from 'react';
 import moment from 'moment';
 import { Component } from 'react';
 import MovementChart from './movementChart';
+import { fetchAnalytics, fetchWeeklyHistory } from '../utils/helpers';
+
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       socket: io.connect(),
-      statuses: []
+      statuses: [],
+      weeklyHistory: []
     };
   }
   componentWillMount() {
     const socket = this.state.socket;
     socket.on('status change', (data) => {
       this.setState({statuses: [data.new_val].concat(this.state.statuses)});
+      return fetchWeeklyHistory().then((response) => {
+        this.setState({
+          weeklyHistory: response.data
+        });
+      });
     });
   }
   componentDidMount() {
-    return axios.get('/statuses').then((response) => {
+    return fetchAnalytics().then((response) => {
       this.setState({
-        statuses: response.data
+        statuses: response.statuses,
+        weeklyHistory: response.weeklyHistory
       });
     });
   }
@@ -42,13 +51,14 @@ export default class App extends Component {
         </header>
         <div className="dashboard squeeze">
           <div>
-            <h2 style={{marginBottom: 5, marginLeft: 4}}>Recent Activity</h2>
+            <h2 className="title">Recent Activity</h2>
             <div className="card-container">
               {timecards}
             </div>
           </div>
           <div className="chart-container">
-            <MovementChart />
+            <h2 className="title push-half--bottom pad-half--left">Weekly Activity</h2>
+            <MovementChart lineData={this.state.weeklyHistory} />
           </div>
         </div>
       </div>
