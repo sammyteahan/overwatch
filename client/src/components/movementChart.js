@@ -40,7 +40,8 @@ class MovementChart extends Component {
       },
       options: {
         responsive: true,
-        showGridLines: true
+        showGridLines: true,
+        maintainAspectRatio: true
       }
     };
   }
@@ -94,7 +95,7 @@ class MovementChart extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{width: 600}}>
         <canvas ref="chart"></canvas>
       </div>
     );

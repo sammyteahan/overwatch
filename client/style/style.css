@@ -1,6 +1,6 @@
-/*-----------------------------------*\
-              ¡GLOBAL
-\*-----------------------------------*/
+/*---------------------------------------------------------------------------*\
+                                  ¡GLOBAL
+\*---------------------------------------------------------------------------*/
 * {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -54,7 +54,8 @@ header {
 
 .dashboard {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .card-container {
@@ -63,7 +64,9 @@ header {
   overflow-y: scroll;
 }
 
-.chart-container {}
+.chart-container {
+  flex: 0 1 auto;
+}
 
 
 
@@ -71,7 +74,7 @@ header {
                 ¡CARDS
 \*-----------------------------------*/
 .wrap-cards {
-  flex: 1 0 auto;
+  flex: 0 0 auto;
 }
 
 .card {
@@ -110,6 +113,10 @@ header {
 
 .spacing {
   letter-spacing: 10px;
+}
+
+.spacing-sm {
+  letter-spacing: 2px;
 }
 
 

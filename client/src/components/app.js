@@ -51,13 +51,13 @@ export default class App extends Component {
         </header>
         <div className="dashboard squeeze">
           <div className="wrap-cards">
-            <h2 className="title">Recent Activity</h2>
+            <h3 className="[ title spacing-sm ]">RECENT ACTIVITY</h3>
             <div className="card-container">
               {timecards}
             </div>
           </div>
           <div className="chart-container">
-            <h2 className="title push-half--bottom pad-half--left">Weekly Activity</h2>
+            <h3 className="[ title spacing-sm ] [ push-half--bottom pad-half--left ]">WEEKLY ACTIVITY</h3>
             <MovementChart lineData={this.state.weeklyHistory} />
           </div>
         </div>

@@ -21513,9 +21513,9 @@
 	            'div',
 	            { className: 'wrap-cards' },
 	            _react2.default.createElement(
-	              'h2',
-	              { className: 'title' },
-	              'Recent Activity'
+	              'h3',
+	              { className: '[ title spacing-sm ]' },
+	              'RECENT ACTIVITY'
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -21527,9 +21527,9 @@
 	            'div',
 	            { className: 'chart-container' },
 	            _react2.default.createElement(
-	              'h2',
-	              { className: 'title push-half--bottom pad-half--left' },
-	              'Weekly Activity'
+	              'h3',
+	              { className: '[ title spacing-sm ] [ push-half--bottom pad-half--left ]' },
+	              'WEEKLY ACTIVITY'
 	            ),
 	            _react2.default.createElement(_movementChart2.default, { lineData: this.state.weeklyHistory })
 	          )
@@ -36618,7 +36618,8 @@
 	      },
 	      options: {
 	        responsive: true,
-	        showGridLines: true
+	        showGridLines: true,
+	        maintainAspectRatio: true
 	      }
 	    };
 	    return _this;
@@ -36682,7 +36683,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { style: { width: 600 } },
 	        _react2.default.createElement('canvas', { ref: 'chart' })
 	      );
 	    }
