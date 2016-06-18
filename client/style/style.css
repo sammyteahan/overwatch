@@ -18,6 +18,8 @@ body {
     color: #47a3da;
     font-family: 'Lato', Calibri, Arial, sans-serif;
     height: 100%;
+    -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
 }
 
 
