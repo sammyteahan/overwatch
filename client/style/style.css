@@ -58,7 +58,6 @@ header {
 .dashboard {
   display: flex;
   justify-content: space-around;
-  width: 100%;
 }
 
 .card-container {
@@ -67,8 +66,23 @@ header {
   overflow-y: scroll;
 }
 
-.chart-container {
-  flex: 0 1 auto;
+.chart-container {}
+
+.wrap-chart {
+  min-width: 550px;
+  max-width: 650px;
+}
+
+@media screen and (max-width: 992px) {
+  .dashboard {
+    flex-direction: column;
+  }
+  .chart-container {
+    margin: 0 auto;
+  }
+  .chart-container .wrap-chart {
+    min-width: 300px;
+  }
 }
 
 
@@ -86,6 +100,12 @@ header {
   padding: 15px 30px;
 }
 
+@media screen and (max-width: 992px) {
+  .wrap-cards {
+    order: 1;
+  }
+}
+
 
 
 /*-----------------------------------*\
@@ -93,6 +113,7 @@ header {
 \*-----------------------------------*/
 .squeeze {
     max-width: 1024px;
+    padding: 0 10px;
     position: relative;
     width: 100%;
 }
