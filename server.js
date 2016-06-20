@@ -58,7 +58,7 @@ r.connect({db: 'overwatch'}).then(function (conn) {
 io.on('connection', function (socket) {
   console.log('client connected');
   socket.on('disconnect', function () {
-    console.log('disconnected');
+    console.log('client disconnected');
   });
   /**
   * @desc action :: new status
