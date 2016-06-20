@@ -93,7 +93,6 @@ class MovementChart extends Component {
       })
     }
   }
-  //  style={{width: 600}}
   render() {
     return (
       <div className="wrap-chart">
