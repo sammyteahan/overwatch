@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Chart from 'chart.js';
 
 
@@ -102,4 +102,9 @@ class MovementChart extends Component {
   }
 }
 
+MovementChart.propTypes = {
+  lineData: PropTypes.array.isRequired
+}
+
 export default MovementChart;
+
