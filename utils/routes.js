@@ -1,7 +1,6 @@
 var r = require('rethinkdb'),
   helpers = require('./helpers.js');
 
-
 /**
 * @desc Helpers for REST routes
 */

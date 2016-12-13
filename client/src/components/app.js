@@ -6,6 +6,9 @@ import MovementChart from './movementChart';
 import { fetchAnalytics, fetchWeeklyHistory } from '../utils/helpers';
 
 
+/**
+* @name App
+*/
 export default class App extends Component {
   constructor(props) {
     super(props);

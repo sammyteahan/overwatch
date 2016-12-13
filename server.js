@@ -16,7 +16,7 @@ var express = require('express'),
 */
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/client'));
 app.use(helpers.createConnection);
 
