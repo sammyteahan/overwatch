@@ -15,6 +15,7 @@ export default class App extends Component {
       weeklyHistory: []
     };
   }
+
   componentWillMount() {
     const socket = this.state.socket;
     socket.on('status change', (data) => {
@@ -26,6 +27,7 @@ export default class App extends Component {
       });
     });
   }
+
   componentDidMount() {
     return fetchAnalytics().then((response) => {
       this.setState({
@@ -34,6 +36,7 @@ export default class App extends Component {
       });
     });
   }
+
   render() {
     let timecards = this.state.statuses.map((item, i) => {
       let now = moment(item.created)
