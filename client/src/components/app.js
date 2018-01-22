@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
-import { Component } from 'react';
+import Header from './header';
 import MovementChart from './movementChart';
 import { fetchAnalytics, fetchWeeklyHistory } from '../utils/helpers';
 
@@ -10,6 +10,7 @@ import { fetchAnalytics, fetchWeeklyHistory } from '../utils/helpers';
 * @name App
 */
 export default class App extends Component {
+  // @todo add loading indicators
   constructor(props) {
     super(props);
     this.state = {
@@ -19,8 +20,9 @@ export default class App extends Component {
     };
   }
 
+  // @todo this should be moved to componentWillReceiveProps
   componentWillMount() {
-    const socket = this.state.socket;
+    const { socket } = this.state;
     socket.on('status change', (data) => {
       this.setState({statuses: [data.new_val].concat(this.state.statuses)});
       return fetchWeeklyHistory().then((response) => {
@@ -33,10 +35,8 @@ export default class App extends Component {
 
   componentDidMount() {
     return fetchAnalytics().then((response) => {
-      this.setState({
-        statuses: response.statuses,
-        weeklyHistory: response.weeklyHistory
-      });
+      const { statuses, weeklyHistory } = response;
+      this.setState({ statuses, weeklyHistory });
     });
   }
 
@@ -50,11 +50,10 @@ export default class App extends Component {
         </div>
       );
     });
+
     return (
       <div className="content">
-        <header className="highlight pad--ends push--bottom">
-          <h1 className="spacing">OVERWATCH</h1>
-        </header>
+        <Header title="Overwatch" />
         <div className="dashboard squeeze">
           <div className="wrap-cards">
             <h3 className="[ title spacing-sm ]">RECENT ACTIVITY</h3>
